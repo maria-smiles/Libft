@@ -2,7 +2,6 @@
 
 static int	ft_chrfind(char s, char const *set)
 {
-	int	i;
 	int	res;
 
 	res = 0;

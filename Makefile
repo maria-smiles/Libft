@@ -21,6 +21,10 @@ ${NAME}: ${OBJS}
 %.o: %c
 	gcc ${FLAGS} -c $< -o $@
 
+so:
+	cc -fPIC $(FLAGS) $(SRCS)
+	gcc -shared -o libft.so $(OBJS)
+	
 clean: 
 	rm -f ${OBJS}
 
