@@ -16,9 +16,9 @@ void	*ft_memchr (const void *arr, int c, size_t n)
 	{
 		if (ar[i] == num[0])
 		{
-			result = ft_memcmp(&arr[i], num, 4);
+			result = ft_memcmp(&ar[i], num, 4);
 			if (result == 0)
-				ptr_return = (char *) &arr[i];
+				ptr_return = (char *) &ar[i];
 		}
 		else
 			i++;
