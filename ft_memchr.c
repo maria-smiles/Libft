@@ -2,26 +2,21 @@
 
 void	*ft_memchr (const void *arr, int c, size_t n)
 {
-	unsigned char	*num;
 	unsigned char	*ar;
 	size_t			i;
-	int				result;
 	char			*ptr_return;
 
-	ar = (unsigned char *) arr;
-	num = (unsigned char *) &c;
-	ptr_return = (char *) '\0';
+	ar = arr;
+	ptr_return = NULL;
 	i = 0;
 	while (i < n)
 	{
-		if (ar[i] == num[0])
+		if ((char) ar[i] == (char) c)
 		{
-			result = ft_memcmp(&ar[i], num, 4);
-			if (result == 0)
-				ptr_return = (char *) &ar[i];
+			ptr_return = (char *) &ar[i];
+			return (ptr_return);
 		}
-		else
-			i++;
+		i++;
 	}
 	return (ptr_return);
 }

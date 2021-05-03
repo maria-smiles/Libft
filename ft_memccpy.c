@@ -13,5 +13,5 @@ void	*ft_memccpy (void *destination, const void *source, int c, size_t n)
 		num = ptr_c_find - (unsigned char *)source + 1;
 		destination = ft_memcpy(destination, source, num);
 	}
-	return ((unsigned char *)destination + num + 1);
+	return ((unsigned char *)destination + num);
 }

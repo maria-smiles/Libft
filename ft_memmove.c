@@ -1,6 +1,6 @@
 #include "libft.h"
 
-void	*memmove (void *destination, const void *source, size_t n)
+void	*ft_memmove (void *destination, const void *source, size_t n)
 {
 	unsigned char	*dest;
 	unsigned char	*src;
@@ -18,7 +18,7 @@ void	*memmove (void *destination, const void *source, size_t n)
 	}
 	while (n > 0)
 	{
-		dest = src;
+		*dest = *src;
 		dest += dif;
 		src += dif;
 		n--;

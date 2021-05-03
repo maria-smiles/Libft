@@ -9,7 +9,7 @@ void	*ft_memcpy (void *destination, const void *source, size_t n)
 	src = (unsigned char *)source;
 	while (n > 0)
 	{
-		dest = src;
+		*dest = *src;
 		dest++;
 		src++;
 		n--;

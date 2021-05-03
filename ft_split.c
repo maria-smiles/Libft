@@ -2,9 +2,9 @@
 
 static int	ft_count(const char *s, char c, int i)
 {
-    int count;
-    
-    count = 0;
+	int	count;
+
+	count = 0;
 	while (s[i] != '\0')
 	{
 		if ((s[i] != c) && (i == 0 || (s[i - 1] == c)))
@@ -15,10 +15,10 @@ static int	ft_count(const char *s, char c, int i)
 		else
 			i++;
 	}
-    return (count);
+	return (count);
 }
 
-void ft_free(char **dst, int j)
+void	ft_free(char **dst, int j)
 {
 	while (j >= 0)
 	{
@@ -28,12 +28,12 @@ void ft_free(char **dst, int j)
 	free(dst);
 }
 
-static int ft_putarr(char **dst, int j, int num, char *begin, int i)
+static int	ft_putarr(char **dst, int j, int num, char *begin, int i)
 {
 	int	k;
 
 	k = 0;
-	dst[j] =  malloc(sizeof(char) * (num + 1));
+	dst[j] = malloc(sizeof(char) * (num + 1));
 	if (!dst[j])
 		ft_free(dst, j);
 	while (k < num)
@@ -42,7 +42,7 @@ static int ft_putarr(char **dst, int j, int num, char *begin, int i)
 		k++;
 	}
 	dst[j][k] = '\0';
-	return j+=1;
+	return (j += 1);
 }
 
 static void	ft_setstr(char *begin, char c, char **dst)
@@ -59,17 +59,17 @@ static void	ft_setstr(char *begin, char c, char **dst)
 		if (begin[i] != c)
 			num++;
 		else if (begin[i] == c && begin[i - 1] != c)
-			{
-				j = ft_putarr(dst, j, num, begin, i);
-				num = 0;
-			}
-        else if (begin[i] == c && begin[i - 1] == c)
-            {
-                i++;
-                continue;
-            }
-        i++;
-    }
+		{
+			j = ft_putarr(dst, j, num, begin, i);
+			num = 0;
+		}
+		else if (begin[i] == c && begin[i - 1] == c)
+		{
+			i++;
+			continue ;
+		}
+		i++;
+	}
 }
 
 char	**ft_split(char const *s, char c)
@@ -78,7 +78,6 @@ char	**ft_split(char const *s, char c)
 	int		i;
 	int		count;
 	char	**dst;
-
 
 	i = 0;
 	while (s[i] == c)
@@ -89,8 +88,7 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	count = ft_count(s, c, i);
 	dst = malloc(sizeof(char *) * (count + 1));
-
 	ft_setstr(begin, c, dst);
-    dst[count]= NULL;
+	dst[count] = NULL;
 	return (dst);
 }

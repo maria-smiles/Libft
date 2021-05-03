@@ -1,13 +1,19 @@
 #include "libft.h"
 
 char	*ft_strchr(const char *str, int c)
-{
-	char	*c_in_str;
+{	
+	int	len;
+	int	i;
 
-	c_in_str = (char *)str;
-	while (*c_in_str != c)
+	len = ft_strlen(str);
+	i = 0;
+	if (c == '\0' || len == 1)
+		return (0);
+	while (i < len)
 	{
-		c_in_str++;
+		if (str[i] == c)
+			return ((char *) &str[i]);
+		i++;
 	}
-	return (c_in_str);
+	return (0);
 }

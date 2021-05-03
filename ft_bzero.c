@@ -1,14 +1,7 @@
 #include "libft.h"
-
+#include <stdio.h>
 void	ft_bzero(void *s, size_t n)
 {
-	unsigned char	*dest;
-
-	dest = s;
-	while (n > 0)
-	{
-		*dest = '\0';
-		dest++;
-		n--;
-	}
+	if (n != 0)
+		ft_memset(s, '\0', n);
 }
