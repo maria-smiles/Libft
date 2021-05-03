@@ -8,13 +8,26 @@ SRCS =	ft_atoi.c		ft_bzero.c		ft_calloc.c		ft_isalnum.c\
 		ft_strnstr.c 	ft_strrchr.c 	ft_strtrim.c	ft_substr.c\
 	   	ft_tolower.c 	ft_toupper.c
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
+
+HEAD = libft.h
 
 NAME = libft.a
 
 OBJS = $(patsubst %.c, %.o, $(SRCS))
 
 all: $(NAME)
+
+#tests
+TEST_STRCHR = test_strchr.c
+test_strchr:
+	gcc $(FLAGS) $(TEST_STRCHR) -L. -lft $(HEAD) -o test_strchr.out
+TEST_STRRCHR = test_strrchr.c
+test_strrchr:
+	gcc $(FLAGS) $(TEST_STRRCHR) -L. -lft $(HEAD) -o test_strrchr.out
+
+tests: re test_strrchr test_strchr
+#end tests
 
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $?
@@ -24,14 +37,24 @@ re: fclean all
 %.o: %c
 	gcc $(FLAGS) -c $< -o $@
 
-#so:
-#	cc -fPIC $(FLAGS) $(SRCS)
-#	gcc -shared -o libft.so $(OBJS)
+so:
+	cc -fPIC $(FLAGS) $(SRCS)
+	gcc -shared -o libft.so $(OBJS)
 	
 clean: 
-	rm -f $(OBJS)
+	$(RM) $(OBJS) *.gch
 
 fclean: clean
-	rm -f $(NAME)
+	$(RM) $(NAME) *.out *.so
 
 .PHONY: libft.a all clean fclean re
+
+ifdef OS
+   RM = del /Q
+   FixPath = $(subst /,\,$1)
+else
+   ifeq ($(shell uname), Linux)
+      RM = rm -f
+      FixPath = $1
+   endif
+endif

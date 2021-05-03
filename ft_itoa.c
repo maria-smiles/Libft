@@ -6,7 +6,7 @@ static void	ft_putnbr(char *str, int i, int j, int n)
 	i -= 1;
 	while (i >= j)
 	{
-		str[i] = n % 10;
+		str[i] = n % 10 + '0';
 		n = n / 10;
 		i--;
 	}
@@ -25,7 +25,7 @@ char	*ft_itoa(int n)
 		i++;
 		j = j / 10;
 	}
-	str = (char *)malloc(sizeof(str) * (i + 2));
+	//str = (char *)malloc(sizeof(str) * (i + 2));
 	j = 0;
 	if (n < 0)
 	{
@@ -34,6 +34,7 @@ char	*ft_itoa(int n)
 		j += 1;
 		n = -n;
 	}
+	str = (char *)malloc(sizeof(str) * (i + 1));
 	ft_putnbr(&str[j], i, j, n);
-	return (&str[0]);
+	return (str);
 }
