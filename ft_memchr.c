@@ -6,7 +6,7 @@ void	*ft_memchr (const void *arr, int c, size_t n)
 	size_t			i;
 	char			*ptr_return;
 
-	ar = arr;
+	ar = (unsigned char *) arr;
 	ptr_return = NULL;
 	i = 0;
 	while (i < n)

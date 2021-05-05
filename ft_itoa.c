@@ -25,7 +25,7 @@ char	*ft_itoa(int n)
 		i++;
 		j = j / 10;
 	}
-	//str = (char *)malloc(sizeof(str) * (i + 2));
+	str = (char *)malloc(sizeof(str) * (i + 2));
 	j = 0;
 	if (n < 0)
 	{
@@ -34,7 +34,6 @@ char	*ft_itoa(int n)
 		j += 1;
 		n = -n;
 	}
-	str = (char *)malloc(sizeof(str) * (i + 1));
-	ft_putnbr(&str[j], i, j, n);
+	ft_putnbr(str, i+1 , j, n);  //&str[j]
 	return (str);
 }

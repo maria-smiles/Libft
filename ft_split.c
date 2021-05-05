@@ -50,13 +50,20 @@ static void	ft_setstr(char *begin, char c, char **dst)
 	int	j;
 	int	num;
 	int	i;
+	size_t len;
 
+	len = ft_strlen(begin);
 	num = 0;
 	i = 0;
 	j = 0;
-	while (begin[i] != '\0')
+	while (i < len)
 	{
-		if (begin[i] != c)
+		if (begin[i+1] == '\0' && begin[i] != c)
+		{
+			j = ft_putarr(dst, j, num, begin, i);
+			num = 0;
+		}
+		else if (begin[i] != c)
 			num++;
 		else if (begin[i] == c && begin[i - 1] != c)
 		{
@@ -68,6 +75,7 @@ static void	ft_setstr(char *begin, char c, char **dst)
 			i++;
 			continue ;
 		}
+
 		i++;
 	}
 }

@@ -7,10 +7,13 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	i = 0;
 	substr = malloc(sizeof(s) * (len + 1));
-	while ((i < len) || (s[start + i]) != '\0')
+	while (i < len)
 	{
-		substr[i] = s[start + i];
-		i++;
+		if ((s[start + i]) != '\0')
+		{
+			substr[i] = s[start + i];
+			i++;
+		}
 	}
 	substr[i] = '\0';
 	return (substr);

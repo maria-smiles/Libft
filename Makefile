@@ -25,8 +25,15 @@ test_strchr:
 TEST_STRRCHR = test_strrchr.c
 test_strrchr:
 	gcc $(FLAGS) $(TEST_STRRCHR) -L. -lft $(HEAD) -o test_strrchr.out
+TEST_ITOA = test_itoa.c
+test_itoa:
+	gcc $(FLAGS) $(TEST_ITOA) -L. -lft $(HEAD) -o test_itoa.out
+TEST_SUBSTR = test_substr.c
+test_itoa:
+	gcc $(FLAGS) $(TEST_SUBSTR) -L. -lft $(HEAD) -o test_substr.out
 
-tests: re test_strrchr test_strchr
+
+tests: re test_strrchr test_strchr test_itoa test_substr.c
 #end tests
 
 $(NAME): $(OBJS)
