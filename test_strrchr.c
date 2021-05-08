@@ -1,8 +1,7 @@
-#include <stdlib.h>
 #include <unistd.h>
-#include <string.h>
-#include "libft.h"
 #include <stdio.h>
+
+#include "ft_strrchr.c"
 
 static void		ft_print_result(char const *s)
 {

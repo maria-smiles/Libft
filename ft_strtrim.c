@@ -2,18 +2,16 @@
 
 static int	ft_chrfind(char s, char const *set)
 {
-	int	res;
-	int i;
+	int	i;
 
 	i = 0;
-	res = 0;
 	while (set[i] != '\0')
 	{
 		if (s == set[i])
-			res = 1;
+			return (1);
 		i++;
 	}
-	return (res);
+	return (0);
 }
 
 static char	*ft_makestr(char *newstr, const char *p_beg, const char *p_end)
@@ -42,21 +40,18 @@ char	*ft_strtrim(char const *s1, char const *set)
 	i = 0;
 	len = ft_strlen(s1);
 	if (len == 0)
-		return (s1);
+		return ((char *) s1);
 	while (ft_chrfind(s1[i], set))
 		i++;
-	if (i == (size_t) ft_strlen(s1))
-	{
-		newstr = malloc(sizeof(s1) * (2));
-		newstr = "";
-		return (newstr);
-	}
 	p_beg = (char *) &s1[i];
-	i = 0;
-	while (ft_chrfind(s1[len - i - 1], set))
+	i = 1;
+	while ((i < len) && (ft_chrfind(s1[len - i], set)))
 		i++;
-	p_end = (char *) &s1[len - i - 1];
-	newstr = malloc(sizeof(s1) * (p_end - p_beg + 2));
+	p_end = (char *) &s1[len - i];
+	if (p_end - p_beg < 0)
+		newstr = malloc(sizeof(s1));
+	else
+		newstr = malloc(sizeof(s1) * (p_end - p_beg));
 	newstr = ft_makestr(newstr, p_beg, p_end);
 	return (newstr);
 }

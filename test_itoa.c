@@ -1,13 +1,14 @@
 #include <stdlib.h>
 #include <unistd.h>
-#include "libft.h"
 #include <stdio.h>
+
+#include "ft_itoa.c"
 
 static void		ft_print_result(char *s)
 {
 	int		len;
 
-if (!s)
+	if (!s)
 		write(1, "NULL", 4);
 	else
 	{
