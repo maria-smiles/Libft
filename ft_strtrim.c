@@ -44,8 +44,12 @@ char	*ft_strtrim(char const *s1, char const *set)
 	if (len == 0)
 		return (s1);
 	while (ft_chrfind(s1[i], set))
-	{
 		i++;
+	if (i == (size_t) ft_strlen(s1))
+	{
+		newstr = malloc(sizeof(s1) * (2));
+		newstr = "";
+		return (newstr);
 	}
 	p_beg = (char *) &s1[i];
 	i = 0;

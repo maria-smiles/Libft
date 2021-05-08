@@ -6,8 +6,11 @@ void	*ft_memccpy (void *destination, const void *source, int c, size_t n)
 	unsigned int	num;
 
 	ptr_c_find = ft_memchr(source, c, n);
-	if (*ptr_c_find == '\0')
-		return ((void *)ptr_c_find);
+	if (ptr_c_find == NULL)
+	{
+		destination = ft_memcpy(destination, source, n);
+		return (ptr_c_find);
+	}
 	else
 	{
 		num = ptr_c_find - (unsigned char *)source + 1;

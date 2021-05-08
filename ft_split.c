@@ -56,9 +56,9 @@ static void	ft_setstr(char *begin, char c, char **dst)
 	num = 0;
 	i = 0;
 	j = 0;
-	while (i < len)
+	while (i <= len)
 	{
-		if (begin[i+1] == '\0' && begin[i] != c)
+		if (begin[i] == '\0' && begin[i-1] != c)
 		{
 			j = ft_putarr(dst, j, num, begin, i);
 			num = 0;
@@ -93,7 +93,12 @@ char	**ft_split(char const *s, char c)
 	if (s[i] != '\0')
 		begin = (char *) &s[i];
 	else
-		return (NULL);
+	{
+		dst = malloc(sizeof(char *) * (1));
+		dst[0] = malloc(sizeof(char) * (1));
+		dst[0][0] = '\0';
+		return (dst);
+	}
 	count = ft_count(s, c, i);
 	dst = malloc(sizeof(char *) * (count + 1));
 	ft_setstr(begin, c, dst);
