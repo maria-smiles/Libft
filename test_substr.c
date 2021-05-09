@@ -3,24 +3,6 @@
 
 #include "ft_substr.c"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	char	*substr;
-	size_t	i;
-
-	i = 0;
-	substr = malloc(sizeof(s) * (len + 1));
-	while (i < len)
-	{
-		if ((s[start + i]) != '\0')
-		{
-			substr[i] = s[start + i];
-			i++;
-		}
-	}
-	substr[i] = '\0';
-	return (substr);
-}
 static void		ft_print_result(char const *s)
 {
 	printf("%s\n", s);

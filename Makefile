@@ -25,7 +25,7 @@ test_strchr:
 
 TEST_STRRCHR = test_strrchr.c
 test_strrchr:
-	clang $(FLAGS) $(TEST_STRRCHR) -o test_strrchr.out
+	clang $(FLAGS) ft_strlen.c $(TEST_STRRCHR) -o test_strrchr.out
 
 TEST_ITOA = test_itoa.c
 test_itoa:
@@ -48,7 +48,7 @@ test_strnstr:
 	clang $(FLAGS) ft_strlen.c ft_strncmp.c $(TEST_STRNSTR) -o test_strnstr.out
 
 test_build:
-	gcc $(FLAGS) $(SRCS) -o test_substr.out
+	gcc $(FLAGS) $(SRCS)
 
 tests: re test_strrchr test_strchr test_itoa test_substr test_strtrim test_split test_strnstr
 #end tests
