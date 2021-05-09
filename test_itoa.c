@@ -6,18 +6,7 @@
 
 static void		ft_print_result(char *s)
 {
-	int		len;
-
-	if (!s)
-		write(1, "NULL", 4);
-	else
-	{
-		len = 0;
-		while (s[len])
-			len++;
-		write(1, s, len);
-		free(s);
-	}
+	printf("%s\n",s);
 }
 
 int				main()

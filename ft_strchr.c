@@ -2,7 +2,7 @@
 
 char	*ft_strchr(const char *str, int c)
 {	
-	size_t 	len;
+	size_t	len;
 	size_t	i;
 
 	len = ft_strlen(str);

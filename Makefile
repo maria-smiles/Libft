@@ -29,7 +29,7 @@ test_strrchr:
 
 TEST_ITOA = test_itoa.c
 test_itoa:
-	clang $(FLAGS) $(TEST_ITOA) -o test_itoa.out
+	clang $(FLAGS) ft_strlcpy.c ft_strlen.c $(TEST_ITOA) -o test_itoa.out
 
 TEST_SUBSTR = test_substr.c
 test_substr:
@@ -39,10 +39,18 @@ TEST_STRTRIM = test_strtrim.c
 test_strtrim:
 	clang $(FLAGS) ft_strlen.c $(TEST_STRTRIM) -o test_strtrim.out
 
+TEST_SPLIT = test_split.c
+test_split:
+	clang $(FLAGS) ft_strlen.c $(TEST_SPLIT) -o test_split.out
+
+TEST_STRNSTR = test_strnstr.c
+test_strnstr:
+	clang $(FLAGS) ft_strlen.c ft_strncmp.c $(TEST_STRNSTR) -o test_strnstr.out
+
 test_build:
 	gcc $(FLAGS) $(SRCS) -o test_substr.out
 
-tests: re test_strrchr test_strchr test_itoa test_substr test_strtrim
+tests: re test_strrchr test_strchr test_itoa test_substr test_strtrim test_split test_strnstr
 #end tests
 
 $(NAME): $(OBJS)

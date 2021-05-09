@@ -3,43 +3,20 @@
 char	*ft_strnstr (const char *big, const char *little, size_t len)
 {
 	size_t	i;
-	int		result;
-	size_t big_len;
-	size_t end;
-	size_t lit_len;
+	size_t	lit_len;
 
-	big_len = ft_strlen(big);
-	if (big_len < len)
-		len = big_len;
-	end = len;
-	lit_len = ft_strlen(little);
 	i = 0;
-	if (*little == '\0')
+	lit_len = ft_strlen(little);
+	if (lit_len == 0)
 		return ((char *)big);
-	else
+	if (lit_len > len)
+		lit_len = len;
+	while (i < len - lit_len)
 	{
-		while (i < len)
-		{
-			if (big[i] == little[0])
-			{
-				if (end < lit_len)
-					break ;
-				result = ft_strncmp(&big[i], little, lit_len);
-				if (result == 0)
-					return ((char *) &big[i]);
-				else
-				{
-					i++;
-					end--;
-					continue;
-				}
-			}
-			else
-			{
-				i++;
-				end--;
-			}
-		}
+		if (big[0] == little[0] && !(ft_strncmp(&big[0], little, lit_len)))
+			return ((char *) big);
+		big++;
+		i++;
 	}
 	return (0);
 }

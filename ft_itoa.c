@@ -1,5 +1,5 @@
 #include <stdlib.h>
-
+#include "libft.h"
 static void	ft_putnbr(char *str, int i, int j, int n)
 {
 	str[i] = '\0';
@@ -12,11 +12,10 @@ static void	ft_putnbr(char *str, int i, int j, int n)
 	}
 }
 
-char	*ft_itoa(int n)
+static char	*ft_num(int n, char *str)
 {
-	int		i;
 	int		j;
-	char	*str;
+	int		i;
 
 	j = n;
 	i = 0;
@@ -25,7 +24,7 @@ char	*ft_itoa(int n)
 		i++;
 		j = j / 10;
 	}
-	str = (char *)malloc(sizeof(str) * (i + 2));
+	str = (char *) malloc(sizeof(str) * (i + 2));
 	j = 0;
 	if (n < 0)
 	{
@@ -34,6 +33,28 @@ char	*ft_itoa(int n)
 		j += 1;
 		n = -n;
 	}
-	ft_putnbr(str, i+1 , j, n);  //&str[j]
+	ft_putnbr(str, i + 1, j, n);
 	return (str);
+}
+
+char	*ft_itoa(int n)
+{
+	char	*str;
+	int i;
+
+	str = NULL;
+	if (n == -2147483648)
+	{
+		str = malloc(sizeof(char *) * (12));
+		i = ft_strlcpy(str, "-2147483648", 12);
+		if(i == 11)
+			return (str);
+		else
+			return (NULL);
+	}
+	else
+	{
+		str = ft_num(n, str);
+		return (str);
+	}
 }

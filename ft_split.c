@@ -47,10 +47,10 @@ static int	ft_putarr(char **dst, int j, int num, char *begin, int i)
 
 static void	ft_setstr(char *begin, char c, char **dst)
 {
-	int	j;
-	int	num;
-	int	i;
-	size_t len;
+	int		j;
+	int		num;
+	size_t	i;
+	size_t	len;
 
 	len = ft_strlen(begin);
 	num = 0;
@@ -58,7 +58,7 @@ static void	ft_setstr(char *begin, char c, char **dst)
 	j = 0;
 	while (i <= len)
 	{
-		if (begin[i] == '\0' && begin[i-1] != c)
+		if (begin[i] == '\0' && begin[i - 1] != c)
 		{
 			j = ft_putarr(dst, j, num, begin, i);
 			num = 0;
@@ -75,7 +75,6 @@ static void	ft_setstr(char *begin, char c, char **dst)
 			i++;
 			continue ;
 		}
-
 		i++;
 	}
 }
@@ -94,8 +93,9 @@ char	**ft_split(char const *s, char c)
 		begin = (char *) &s[i];
 	else
 	{
-		dst = malloc(sizeof(char *) * (1));
+		dst = malloc(sizeof(char *) * (2));
 		dst[0] = malloc(sizeof(char) * (1));
+		dst[1] = NULL;
 		dst[0][0] = '\0';
 		return (dst);
 	}

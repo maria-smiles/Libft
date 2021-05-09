@@ -3,7 +3,7 @@
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t	i;
-	size_t lensrc;
+	size_t	lensrc;
 
 	lensrc = ft_strlen(src);
 	if (lensrc == 0)

@@ -1,4 +1,12 @@
 #include <stdlib.h>
+#include "libft.h"
+
+size_t	ft_dop (size_t	i, char *dst, const char *src, size_t len)
+{
+	dst[i] = src[i - len];
+	i++;
+	return (i);
+}
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
@@ -8,11 +16,9 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	i = 0;
 	if (dstsize != 0)
 	{
-		if (dst != "\0")
-		{
+		if (dst != (void *)'\0')
 			while (dst[i] != '\0')
 				i++;
-		}
 		if (i > dstsize)
 			len = dstsize;
 		else
@@ -20,11 +26,9 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 		while ((src[i - len] != '\0'))
 		{
 			if (i < dstsize - 1)
-			{
-				dst[i] = src[i - len];
-				i++;
-			} else
-				break;
+				i = ft_dop(i, dst, src, len);
+			else
+				break ;
 		}
 		dst[i] = '\0';
 	}
