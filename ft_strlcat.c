@@ -1,4 +1,3 @@
-#include <stdlib.h>
 #include "libft.h"
 
 size_t	ft_dop (size_t	i, char *dst, const char *src, size_t len)

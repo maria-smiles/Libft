@@ -1,5 +1,5 @@
 #include "libft.h"
-#include <stdio.h>
+
 void	ft_bzero(void *s, size_t n)
 {
 	if (n != 0)

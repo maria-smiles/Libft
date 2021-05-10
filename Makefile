@@ -1,3 +1,5 @@
+NAME = libft.a
+
 SRCS =	ft_atoi.c		ft_bzero.c		ft_calloc.c		ft_isalnum.c\
 		ft_isalpha.c	ft_isascii.c	ft_isdigit.c	ft_isprint.c\
 		ft_itoa.c 		ft_memccpy.c 	ft_memchr.c		ft_memcmp.c\
@@ -8,62 +10,21 @@ SRCS =	ft_atoi.c		ft_bzero.c		ft_calloc.c		ft_isalnum.c\
 		ft_strnstr.c 	ft_strrchr.c 	ft_strtrim.c	ft_substr.c\
 	   	ft_tolower.c 	ft_toupper.c
 
-FLAGS = -Wall -Wextra -Werror -g
+FLAGS = -Wall -Wextra -Werror
 
 HEAD = libft.h
-
-NAME = libft.a
 
 OBJS = $(patsubst %.c, %.o, $(SRCS))
 
 all: $(NAME)
-
-#tests
-TEST_STRCHR = test_strchr.c
-test_strchr:
-	clang $(FLAGS) ft_strlen.c $(TEST_STRCHR) -o test_strchr.out
-
-TEST_STRRCHR = test_strrchr.c
-test_strrchr:
-	clang $(FLAGS) ft_strlen.c $(TEST_STRRCHR) -o test_strrchr.out
-
-TEST_ITOA = test_itoa.c
-test_itoa:
-	clang $(FLAGS) ft_strlcpy.c ft_strlen.c $(TEST_ITOA) -o test_itoa.out
-
-TEST_SUBSTR = test_substr.c
-test_substr:
-	clang $(FLAGS) $(TEST_SUBSTR) -o test_substr.out
-
-TEST_STRTRIM = test_strtrim.c
-test_strtrim:
-	clang $(FLAGS) ft_strlen.c $(TEST_STRTRIM) -o test_strtrim.out
-
-TEST_SPLIT = test_split.c
-test_split:
-	clang $(FLAGS) ft_strlen.c $(TEST_SPLIT) -o test_split.out
-
-TEST_STRNSTR = test_strnstr.c
-test_strnstr:
-	clang $(FLAGS) ft_strlen.c ft_strncmp.c $(TEST_STRNSTR) -o test_strnstr.out
-
-test_build:
-	gcc $(FLAGS) $(SRCS)
-
-tests: re test_strrchr test_strchr test_itoa test_substr test_strtrim test_split test_strnstr
-#end tests
 
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $?
 
 re: fclean all
 
-%.o: %c
-	gcc $(FLAGS) -c $< -o $@
-
-so:
-	cc -fPIC $(FLAGS) $(SRCS)
-	gcc -shared -o libft.so $(OBJS)
+%.o: %c $(HEAD)
+	clang $(FLAGS) -c $< -o $@
 	
 clean: 
 	$(RM) $(OBJS) *.gch
@@ -71,7 +32,7 @@ clean:
 fclean: clean
 	$(RM) $(NAME) *.out *.so
 
-.PHONY: libft.a all clean fclean re
+.PHONY: all clean fclean re
 
 ifdef OS
    RM = del /Q
@@ -80,5 +41,10 @@ else
    ifeq ($(shell uname), Linux)
       RM = rm -f
       FixPath = $1
+	  
+so:
+	cc -fPIC $(FLAGS) $(SRCS)
+	gcc -shared -o libft.so $(OBJS)
+	  
    endif
 endif

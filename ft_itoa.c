@@ -1,5 +1,5 @@
-#include <stdlib.h>
 #include "libft.h"
+
 static void	ft_putnbr(char *str, int i, int j, int n)
 {
 	str[i] = '\0';
