@@ -17,7 +17,7 @@ int	ft_strncmp(const char *str1, const char *str2, size_t n)
 			cstr2 = str2[i] + 256;
 		else
 			cstr2 = str2[i];
-		if (cstr1 == cstr2)
+		if (cstr1 == cstr2 && cstr1 != '\0' && cstr2 != '\0')
 			i++;
 		else
 			return (cstr1 - cstr2);

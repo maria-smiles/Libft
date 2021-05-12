@@ -44,6 +44,33 @@ printf("\n1)\n");
 		check_strnstr("lorem ipsum dolor sit amet", "dolor", 15);
 	printf("\n10)\n");
 		check_strnstr("lorem ipsum dolor sit amet", "dolor", 0);
-	return (0);
+
+	printf("\n11)\n");
+
+	//[fail]: your strnstr does not work with empty strings and 0 length
+	//Test code:
+
+	char *s1 = "AAAAAAAAAAAAA";
+	size_t max = strlen(s1);
+
+			check_strnstr(s1, s1, max);
+
+//	Diffs:
+//				strnstr: |AAAAAAAAAAAAA|
+//			 ft_strnstr: |(null)|
+
+	printf("\n12)\n");
+
+//	[no crash]: your strnstr does not segfault when null parameter is sent
+//	Test code:
+
+	check_strnstr(((void *)0), "fake", 3);
+
+
+
+
+		return (0);
+
+
 }
 

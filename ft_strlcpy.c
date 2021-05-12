@@ -5,6 +5,8 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	size_t	i;
 	size_t	lensrc;
 
+	if (!dst || !src)
+		return (0);
 	lensrc = ft_strlen(src);
 	if (lensrc == 0)
 	{

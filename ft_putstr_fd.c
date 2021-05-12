@@ -2,8 +2,8 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	int	i;
-	int	len;
+	size_t	i;
+	size_t	len;
 
 	i = 0;
 	len = ft_strlen(s);

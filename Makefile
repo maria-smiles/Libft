@@ -1,22 +1,78 @@
-NAME = libft.a
-
-SRCS =	ft_atoi.c		ft_bzero.c		ft_calloc.c		ft_isalnum.c\
-		ft_isalpha.c	ft_isascii.c	ft_isdigit.c	ft_isprint.c\
-		ft_itoa.c 		ft_memccpy.c 	ft_memchr.c		ft_memcmp.c\
-		ft_memcpy.c 	ft_memmove.c 	ft_memset.c 	ft_putchar_fd.c\
- 		ft_putendl_fd.c	ft_putnbr_fd.c 	ft_putstr_fd.c 	ft_split.c\
-		ft_strchr.c		ft_strdup.c		ft_strjoin.c 	ft_strlcat.c\
-	   	ft_strlcpy.c 	ft_strlen.c		ft_strmapi.c 	ft_strncmp.c\
+SRCS =	ft_strlen.c		ft_memset.c		ft_bzero.c		ft_calloc.c\
+		ft_strlcpy.c	ft_isalpha.c	ft_isascii.c	ft_isdigit.c\
+		ft_isprint.c	ft_isalnum.c	ft_itoa.c 		ft_memchr.c\
+		ft_memcmp.c		ft_memcpy.c 	ft_memmove.c 	ft_putchar_fd.c\
+		ft_memccpy.c	ft_putstr_fd.c 	ft_split.c		ft_putnbr_fd.c\
+		ft_putendl_fd.c	ft_strchr.c		ft_strdup.c		ft_strjoin.c\
+		ft_strlcat.c	ft_atoi.c		ft_strmapi.c 	ft_strncmp.c\
 		ft_strnstr.c 	ft_strrchr.c 	ft_strtrim.c	ft_substr.c\
 	   	ft_tolower.c 	ft_toupper.c
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 
 HEAD = libft.h
+
+NAME = libft.a
 
 OBJS = $(patsubst %.c, %.o, $(SRCS))
 
 all: $(NAME)
+
+#tests
+TEST_STRCHR = test_strchr.c
+test_strchr:
+	clang $(FLAGS) ft_strlen.c $(TEST_STRCHR) -o test_strchr.out
+
+TEST_STRRCHR = test_strrchr.c
+test_strrchr:
+	clang $(FLAGS) ft_strlen.c $(TEST_STRRCHR) -o test_strrchr.out
+
+TEST_ITOA = test_itoa.c
+test_itoa:
+	clang $(FLAGS) ft_strlcpy.c ft_strlen.c $(TEST_ITOA) -o test_itoa.out
+
+TEST_SUBSTR = test_substr.c
+test_substr:
+	clang $(FLAGS) ft_strlen.c $(TEST_SUBSTR) -o test_substr.out
+
+TEST_STRTRIM = test_strtrim.c
+test_strtrim:
+	clang $(FLAGS) ft_strlen.c $(TEST_STRTRIM) -o test_strtrim.out
+
+TEST_SPLIT = test_split.c
+test_split:
+	clang $(FLAGS) ft_strlen.c $(TEST_SPLIT) -o test_split.out
+
+TEST_STRNSTR = test_strnstr.c
+test_strnstr:
+	clang $(FLAGS) ft_strlen.c ft_strncmp.c $(TEST_STRNSTR) -o test_strnstr.out
+
+TEST_MEMCMP = test_memcmp.c
+test_memcmp:
+	clang $(FLAGS) ft_strlen.c $(TEST_MEMCMP) -o test_memcmp.out
+
+TEST_MEMMOVE = test_memmove.c
+test_memmove:
+	clang $(FLAGS) ft_strlen.c $(TEST_MEMMOVE) -o test_memmove.out
+
+TEST_STRNCMP = test_strncmp.c
+test_strncmp:
+	clang $(FLAGS) $(TEST_STRNCMP) -o test_strncmp.out
+
+TEST_ATOI = test_atoi.c
+test_atoi:
+	clang $(FLAGS) $(TEST_ATOI) -o test_atoi.out
+
+TEST_CALLOC = test_calloc.c
+test_calloc:
+	clang $(FLAGS) ft_bzero.c $(TEST_CALLOC) -o test_calloc.out
+
+test_build:
+	gcc $(FLAGS) $(SRCS)
+
+tests: re test_strrchr test_strchr test_itoa test_substr test_strtrim test_split test_strnstr test_memcmp test_strncmp
+
+#end tests
 
 $(NAME): $(OBJS)
 	ar rcs $(NAME) $?
@@ -24,7 +80,11 @@ $(NAME): $(OBJS)
 re: fclean all
 
 %.o: %c $(HEAD)
-	clang $(FLAGS) -c $< -o $@
+	gcc $(FLAGS) -c $< -o $@
+
+so:
+	cc -fPIC $(FLAGS) $(SRCS)
+	gcc -shared -o libft.so $(OBJS)
 	
 clean: 
 	$(RM) $(OBJS) *.gch
@@ -41,10 +101,5 @@ else
    ifeq ($(shell uname), Linux)
       RM = rm -f
       FixPath = $1
-	  
-so:
-	cc -fPIC $(FLAGS) $(SRCS)
-	gcc -shared -o libft.so $(OBJS)
-	  
    endif
 endif

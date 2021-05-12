@@ -2,7 +2,7 @@
 
 void	*ft_memset (void *destination, int c, size_t n)
 {
-	unsigned char	*dest;
+	char	*dest;
 
 	dest = destination;
 	while (n > 0)

@@ -88,11 +88,15 @@ char	**ft_split(char const *s, char c)
 	else
 	{
 		dst = malloc(sizeof(char *));
+		if (!dst)
+			return ((char **) NULL);
 		dst[0] = NULL;
 		return (dst);
 	}
 	count = ft_count(s, c, i);
 	dst = malloc(sizeof(char *) * (count + 1));
+	if (!dst)
+		return ((char **) NULL);
 	ft_setstr(begin, c, dst);
 	dst[count] = NULL;
 	return (dst);

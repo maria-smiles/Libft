@@ -24,7 +24,7 @@ static char	*ft_num(int n, char *str)
 		i++;
 		j = j / 10;
 	}
-	str = (char *) malloc(sizeof(str) * (i + 2));
+	str = (char *) malloc(sizeof(char) * (i + 2));
 	j = 0;
 	if (n < 0)
 	{
@@ -40,12 +40,14 @@ static char	*ft_num(int n, char *str)
 char	*ft_itoa(int n)
 {
 	char	*str;
-	int		i;
+	size_t		i;
 
 	str = NULL;
 	if (n == -2147483648)
 	{
-		str = malloc(sizeof(char *) * (12));
+		str = malloc(sizeof(char) * (12));
+		if (!str)
+			return (NULL);
 		i = ft_strlcpy(str, "-2147483648", 12);
 		if (i == 11)
 			return (str);

@@ -13,7 +13,7 @@ static int	ft_minus(int i, int *z, const char stri)
 int	ft_atoi (const char *str)
 {
 	int		i;
-	int		num;
+	long long	num;
 	int		z;
 
 	i = 0;
@@ -29,6 +29,11 @@ int	ft_atoi (const char *str)
 	{
 		num = 10 * num + (str[i] - '0');
 		i++;
+		if ((num > 2147483647) && (z == 1))
+			return (-1);
+		if ((num > 2147483648) && (z == -1))
+			return (0);
+
 	}
-	return (z * num);
+	return (z * (int) num);
 }
