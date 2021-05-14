@@ -40,7 +40,7 @@ int					main()
 	check_split("          ", ' ');
 	printf ("--1\n");
 	printf ("test 2\n");
-		check_split("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse", ' ');
+		check_split("one. two, three\0", ' ');
 	printf ("\n");
 	printf ("test 3\n");
 		check_split("   lorem   ipsum dolor     sit amet, consectetur   adipiscing elit. Sed non risus. Suspendisse   ", ' ');

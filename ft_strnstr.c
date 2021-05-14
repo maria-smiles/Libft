@@ -6,8 +6,10 @@ char	*ft_strnstr (const char *big, const char *little, size_t len)
 	size_t	lit_len;
 
 	i = 0;
+	if (!big)
+		return (NULL);
 	lit_len = ft_strlen(little);
-	if (lit_len == 0)
+	if (lit_len == 0 || big == little)
 		return ((char *)big);
 	if (lit_len > len)
 		lit_len = len;

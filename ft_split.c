@@ -73,6 +73,16 @@ static void	ft_setstr(char *begin, char c, char **dst)
 	}
 }
 
+int ft_i(char const *s, char c)
+{
+	int i;
+
+	i = 0;
+	while (s[i] == c)
+		i++;
+	return (i);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	*begin;
@@ -80,9 +90,9 @@ char	**ft_split(char const *s, char c)
 	int		count;
 	char	**dst;
 
-	i = 0;
-	while (s[i] == c)
-		i++;
+	if (!s)
+		return ((char **) NULL);
+	i = ft_i(s, c);
 	if (s[i] != '\0')
 		begin = (char *) &s[i];
 	else

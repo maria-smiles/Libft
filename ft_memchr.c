@@ -2,18 +2,18 @@
 
 void	*ft_memchr (const void *arr, int c, size_t n)
 {
-	const char	*ar;
+	const unsigned char	*ar;
 	size_t			i;
-	char			*ptr_return;
+	unsigned char			*ptr_return;
 
 	ar = arr;
 	ptr_return = NULL;
 	i = 0;
 	while (i < n)
 	{
-		if ((char) ar[i] == (char) c)
+		if ((unsigned char) ar[i] == (unsigned char) c)
 		{
-			ptr_return = (char *) &ar[i];
+			ptr_return = (unsigned char *) &ar[i];
 			return (ptr_return);
 		}
 		i++;
