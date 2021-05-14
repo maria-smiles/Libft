@@ -1,9 +1,11 @@
 #include "libft.h"
 
-static int	ft_count(const char *s, char c, int i)
+static int	ft_count(const char *s, char c)
 {
 	int	count;
+	int	i;
 
+	i = 0;
 	count = 0;
 	while (s[i] != '\0')
 	{
@@ -20,19 +22,22 @@ static int	ft_count(const char *s, char c, int i)
 
 void	ft_free(char **dst, int j)
 {
-	while (j >= 0)
+	while (j > 0)
 	{
-		free(dst[j]);
 		j--;
+		free(dst[j]);
 	}
 	free(dst);
 }
 
-static int	ft_putarr(char **dst, int j, int num, char *begin)
+static int	ft_putarr(char **dst, int j, int num, const char *begin)
 {
 	dst[j] = malloc(sizeof(char) * (num + 1));
 	if (!dst[j])
+	{
 		ft_free(dst, j);
+		return (0);
+	}
 	dst[j][num] = '\0';
 	num -= 1;
 	while (0 <= num)
@@ -41,61 +46,48 @@ static int	ft_putarr(char **dst, int j, int num, char *begin)
 		dst[j][num] = *begin;
 		num--;
 	}
-	return (j += 1);
+	return (j + 1);
 }
 
-static void	ft_setstr(char *begin, char c, char **dst)
+static int	ft_setstr(const char *s, char c, char **dst)
 {
 	int		j;
 	int		num;
 	size_t	i;
 	size_t	len;
 
-	len = ft_strlen(begin);
 	num = 0;
 	i = 0;
 	j = 0;
+	len = ft_strlen(s);
 	while (i <= len)
 	{
-		if ((begin[i] == '\0' || begin[i] == c) && begin[i - 1] != c)
+		if (i == 0)
+			num++;
+		else if ((s[i] == '\0' || s[i] == c) && s[i - 1] != c)
 		{
-			j = ft_putarr(dst, j, num, &begin[i]);
+			j = ft_putarr(dst, j, num, &s[i]);
+			if (j == 0)
+				return (0);
 			num = 0;
 		}
-		else if (begin[i] != c)
+		else if (s[i] != c)
 			num++;
-		else if (begin[i] == c && begin[i - 1] == c)
-		{
-			i++;
-			continue ;
-		}
 		i++;
 	}
-}
-
-int ft_i(char const *s, char c)
-{
-	int i;
-
-	i = 0;
-	while (s[i] == c)
-		i++;
-	return (i);
+	return (1);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	*begin;
-	int		i;
 	int		count;
 	char	**dst;
 
 	if (!s)
 		return ((char **) NULL);
-	i = ft_i(s, c);
-	if (s[i] != '\0')
-		begin = (char *) &s[i];
-	else
+	while (*s == c)
+		s++;
+	if (*s == 0)
 	{
 		dst = malloc(sizeof(char *));
 		if (!dst)
@@ -103,11 +95,12 @@ char	**ft_split(char const *s, char c)
 		dst[0] = NULL;
 		return (dst);
 	}
-	count = ft_count(s, c, i);
+	count = ft_count(s, c);
 	dst = malloc(sizeof(char *) * (count + 1));
 	if (!dst)
 		return ((char **) NULL);
-	ft_setstr(begin, c, dst);
+	if (!ft_setstr(s, c, dst))
+		return (NULL);
 	dst[count] = NULL;
 	return (dst);
 }

@@ -67,8 +67,20 @@ printf("\n1)\n");
 	check_strnstr(((void *)0), "fake", 3);
 
 
+	printf("\n13)\n");
+	check_strnstr("", "", 0);
+
+	printf("\n14)\n");
+	check_strnstr("", (void *)0, 0);
+	printf("\n15)\n");
+	check_strnstr("", (void *)0, 10);
 
 
+
+	printf("\n16)\n");
+	check_strnstr((void *)0, (void *)0, 0);
+	printf("\n17)\n");
+	check_strnstr((void *)0, (void *)0, 4);
 		return (0);
 
 

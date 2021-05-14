@@ -48,6 +48,9 @@ printf("\n test 1\n");
 	printf("new test 4\n");
 
 	check_substr(stra, 0, 42000);
+	printf("new test 5\n");
+	size_t sizeq = (size_t) NULL;
+	check_substr(stra, 10, sizeq);
 	printf("test end\n");
 //	if (!strncmp(ret, "", 1))
 //	{

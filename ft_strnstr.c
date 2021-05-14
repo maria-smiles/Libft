@@ -8,8 +8,12 @@ char	*ft_strnstr (const char *big, const char *little, size_t len)
 	i = 0;
 	if (!big)
 		return (NULL);
+	if (!little)
+		return ((char *)big);
+	if (!(ft_strncmp(little, "", 1)))
+		return ((char *)big);
 	lit_len = ft_strlen(little);
-	if (lit_len == 0 || big == little)
+	if (big == little && len == 0)
 		return ((char *)big);
 	if (lit_len > len)
 		lit_len = len;
