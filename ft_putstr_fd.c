@@ -6,7 +6,7 @@ void	ft_putstr_fd(char *s, int fd)
 	size_t	len;
 
 	if (!s || !fd)
-		return;
+		return ;
 	i = 0;
 	len = ft_strlen(s);
 	while (i < len)

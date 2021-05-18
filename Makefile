@@ -14,14 +14,51 @@ HEAD = libft.h
 
 NAME = libft.a
 
-OBJS = $(patsubst %.c, %.o, $(SRCS))
+RM = rm -f
+
+OBJS = ${SRCS:.c=.o}
 
 all: $(NAME)
+
+$(NAME): $(OBJS) $(HEAD)
+	ar rcs $(NAME) $?
+
+re: fclean all
+
+.c.o:
+	gcc $(FLAGS) -c $< -o ${<:.c=.o}
+
+clean:
+	$(RM) $(OBJS)
+
+fclean: clean
+	$(RM) $(NAME) *.out
+
+.PHONY: all clean fclean re
+
+so:
+	cc -fPIC $(FLAGS) $(SRCS)
+	gcc -shared -o libft.so $(OBJS)
+
+ifdef OS
+   RM = del /Q
+   FixPath = $(subst /,\,$1)
+else
+   ifeq ($(shell uname), Linux)
+      RM = rm -f
+      FixPath = $1
+   endif
+endif
+
 
 #tests
 TEST_STRCHR = test_strchr.c
 test_strchr:
 	clang $(FLAGS) ft_strlen.c $(TEST_STRCHR) -o test_strchr.out
+
+TEST_STRJOIN = test_strjoin.c
+test_strjoin:
+	clang $(FLAGS) ft_strlen.c $(TEST_STRJOIN) -o test_strjoin.out
 
 TEST_STRRCHR = test_strrchr.c
 test_strrchr:
@@ -41,7 +78,7 @@ test_strtrim:
 
 TEST_SPLIT = test_split.c
 test_split:
-	clang $(FLAGS) ft_strlen.c $(TEST_SPLIT) -o test_split.out
+	clang $(FLAGS) ft_strlen.c ft_strlcpy.c $(TEST_SPLIT) -o test_split.out
 
 TEST_STRNSTR = test_strnstr.c
 test_strnstr:
@@ -67,39 +104,14 @@ TEST_CALLOC = test_calloc.c
 test_calloc:
 	clang $(FLAGS) ft_bzero.c $(TEST_CALLOC) -o test_calloc.out
 
+TEST_STRMAPI = test_strmapi.c
+test_strmapi:
+	clang $(FLAGS) ft_strlen.c ft_strncmp.c $(TEST_STRMAPI) -o test_strmapi.out
+
 test_build:
 	gcc $(FLAGS) $(SRCS)
 
-tests: re test_strrchr test_strchr test_itoa test_substr test_strtrim test_split test_strnstr test_memcmp test_strncmp
+tests: re test_strrchr test_strchr test_itoa test_substr test_strtrim test_split test_strnstr test_memcmp test_strncmp test_strmapi
 
 #end tests
 
-$(NAME): $(OBJS)
-	ar rcs $(NAME) $?
-
-re: fclean all
-
-%.o: %c $(HEAD)
-	gcc $(FLAGS) -c $< -o $@
-
-so:
-	cc -fPIC $(FLAGS) $(SRCS)
-	gcc -shared -o libft.so $(OBJS)
-	
-clean: 
-	$(RM) $(OBJS) *.gch
-
-fclean: clean
-	$(RM) $(NAME) *.out *.so
-
-.PHONY: all clean fclean re
-
-ifdef OS
-   RM = del /Q
-   FixPath = $(subst /,\,$1)
-else
-   ifeq ($(shell uname), Linux)
-      RM = rm -f
-      FixPath = $1
-   endif
-endif

@@ -33,6 +33,14 @@ static void			check_split(char *s, char c)
 		ft_print_tabstr(tabstr);
 }
 
+void check(int succes)
+{
+	if (succes)
+		printf("OK\n");
+	else
+		printf("KO\n");
+}
+
 int					main()
 {
 
@@ -130,6 +138,62 @@ int					main()
 	printf ("\ntest 25\n");
 	//TEST 19: |(empty)| with '(empty)' as sep
 	check_split(0, 0);
+
+	printf ("\ntest 26\n");
+	char *invalidReadCheck;
+	invalidReadCheck = malloc(sizeof (char));
+	invalidReadCheck = 0;
+	char	**tab = ft_split(invalidReadCheck, 0);
+	/* 10 */ check(tab[0] == NULL);
+
+	free(tab);
+
+
+
+	printf ("\ntest 25\n");
+
+	check_split("1-2-3-4-5-6-7-8--8-8--8-4------4--4", '-');
+
+
+	/*
+	 Testing ft_split
+ [!] Error - Wrong separation
+ [!] Args: string: "1-2-3-4-5-6-7-8--8-8--8-4------4--4", sep: '-' and index: 4
+ [!] Expected: "5" - Got: "6"
+ [!] Error - Wrong separation
+ [!] Args: string: "1-2-3-4-5-6-7-8--8-8--8-4------4--4", sep: '-' and index: 5
+ [!] Expected: "6" - Got: "7"
+ [!] Error - Wrong separation
+ [!] Args: string: "1-2-3-4-5-6-7-8--8-8--8-4------4--4", sep: '-' and index: 6
+ [!] Expected: "7" - Got: "8"
+ [!] Error - Wrong separation
+ [!] Args: string: "1-2-3-4-5-6-7-8--8-8--8-4------4--4", sep: '-' and index: 10
+ [!] Expected: "8" - Got: "4"
+ [!] Error - Wrong separation
+ [!] Args: string: "---1-2-3-4-5-6-7-8--8-8--8-4------4--4---", sep: '-' and index: 4
+ [!] Expected: "5" - Got: "6"
+ [!] Error - Wrong separation
+ [!] Args: string: "---1-2-3-4-5-6-7-8--8-8--8-4------4--4---", sep: '-' and index: 5
+ [!] Expected: "6" - Got: "7"
+ [!] Error - Wrong separation
+ [!] Args: string: "---1-2-3-4-5-6-7-8--8-8--8-4------4--4---", sep: '-' and index: 6
+ [!] Expected: "7" - Got: "8"
+ [!] Error - Wrong separation
+ [!] Args: string: "---1-2-3-4-5-6-7-8--8-8--8-4------4--4---", sep: '-' and index: 10
+ [!] Expected: "8" - Got: "4"
+ [!] Error - Wrong separation
+ [!] Args: string: "nV3CdE TVSa4WBC5Pif 7wlxVj8Gh2rKJaq KNSeW3zdEUmC0R vOyq5if cmdgC9 b8OdLjTe KCchSYZbA8EO1G32 5MxLVnXNkqGDYFu LFR pVUED68uoxY4hj 4SaqtgVIhi3RlwnTy ncgENTUyjwuMsal vmXq2zpchrYMO Cl4QM", sep: ' ' and index: 8
+ [!] Expected: "5MxLVnXNkqGDYFu" - Got: "MxLVnXNkqGDYFu"
+ [!] Error - Wrong separation
+ [!] Args: string: "So0g e4AsdPMS nbBahMvDJdof blIAeG PBOVfX8YM9s6 ZvM 8bo2FYESIWalLH9v v2XEMZjeQ5 FmkCvgj F0QofHpnZu 90QVWOyliL6T 3K5xVm P4Ly1YjVZWGE", sep: ' ' and index: 6
+ [!] Expected: "8bo2FYESIWalLH9v" - Got: "bo2FYESIWalLH9v"
+ [!] Error - Wrong separation
+ [!] Args: string: "Oh9dP6trs21E m1CUXoaIv7G hE9Zda lBOY y6sfCeRG pE2Y sO1WdFiEpH9Qqn zifTvFG5 9sLUoH", sep: ' ' and index: 8
+ [!] Expected: "9sLUoH" - Got: "sLUoH"
+ [*] ft_split : [KO]
+	 */
+
+
 
 	return (0);
 }

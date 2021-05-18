@@ -20,7 +20,7 @@ static int	ft_count(const char *s, char c)
 	return (count);
 }
 
-void	ft_free(char **dst, int j)
+static void	ft_free(char **dst, int j)
 {
 	while (j > 0)
 	{
@@ -83,19 +83,18 @@ char	**ft_split(char const *s, char c)
 	int		count;
 	char	**dst;
 
-	if (!s)
+	dst = malloc(sizeof(char *));
+	if (!dst)
 		return ((char **) NULL);
+	dst[0] = NULL;
+	if (!s || *s == 0)
+		return (dst);
 	while (*s == c)
 		s++;
 	if (*s == 0)
-	{
-		dst = malloc(sizeof(char *));
-		if (!dst)
-			return ((char **) NULL);
-		dst[0] = NULL;
-		return (dst);
-	}
+		return (dst);		//можно  if count == 0
 	count = ft_count(s, c);
+	ft_free(dst, 0);
 	dst = malloc(sizeof(char *) * (count + 1));
 	if (!dst)
 		return ((char **) NULL);

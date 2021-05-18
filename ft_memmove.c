@@ -5,9 +5,9 @@ void	*ft_memmove (void *dst, const void *src, size_t n)
 	short		dif;
 	char		*dst1;
 	const char	*src1;
-	size_t i;
+	size_t		i;
 
-	if( dst == NULL || dst == src)
+	if (dst == NULL || dst == src)
 		return (dst);
 	dst1 = dst;
 	src1 = src;
@@ -23,7 +23,7 @@ void	*ft_memmove (void *dst, const void *src, size_t n)
 	while (n != 0)
 	{
 		dst1[i] = src1[i];
-		i+=dif;
+		i += dif;
 		n--;
 	}
 	return (dst);

@@ -4,8 +4,8 @@ void	ft_putendl_fd(char *s, int fd)
 {
 	char	endl;
 
-	if(!s || !fd)
-		return;
+	if (!s || !fd)
+		return ;
 	endl = '\n';
 	ft_putstr_fd(s, fd);
 	write(fd, &endl, 1);

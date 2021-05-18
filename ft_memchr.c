@@ -3,8 +3,8 @@
 void	*ft_memchr (const void *arr, int c, size_t n)
 {
 	const unsigned char	*ar;
-	size_t			i;
-	unsigned char			*ptr_return;
+	size_t				i;
+	unsigned char		*ptr_return;
 
 	ar = arr;
 	ptr_return = NULL;

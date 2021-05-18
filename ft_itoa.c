@@ -40,7 +40,7 @@ static char	*ft_num(int n, char *str)
 char	*ft_itoa(int n)
 {
 	char	*str;
-	size_t		i;
+	size_t	i;
 
 	str = NULL;
 	if (n == -2147483648)

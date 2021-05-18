@@ -1,7 +1,7 @@
 #include <unistd.h>
 #include <stdio.h>
 
-#include "ft_strrchr.c"
+#include "ft_strrchr (2).c"
 
 static void		ft_print_result(char const *s)
 {
@@ -45,32 +45,35 @@ static void		check_strrchr(char *s, int c, int offset)
 
 int				main()
 {
-	char		str2[] = "bonjour";
+//	char		str2[] = "bonjour";
 
 
 
-		check_strrchr(str2, 'b', 0);
+//		check_strrchr(str2, 'b', 0);
+//
+//		check_strrchr(str2, 'o', 4);
+//
+//	{
+//		char	str3[]= "bonjourno";
+//
+//		check_strrchr(str3, 'o', 8);
+//	}
+//
+//		check_strrchr(str2, 'j', 3);
+//
+//		check_strrchr(str2, 's', 0);//
+//
+//		check_strrchr(str2, '\0', 7);
+//
+//	{
+//		char	str3[] = "";
+//
+//		check_strrchr(str3, '\0', 0);
+//	}
+	char s[] = "tripouille";
+/* 6 */ check_strrchr(s, 't' + 256, 0);
 
-		check_strrchr(str2, 'o', 4);
 
-	{
-		char	str3[]= "bonjourno";
-
-		check_strrchr(str3, 'o', 8);
-	}
-
-		check_strrchr(str2, 'j', 3);
-
-		check_strrchr(str2, 's', 0);//
-
-		check_strrchr(str2, '\0', 7);
-
-	{
-		char	str3[] = "";
-
-		check_strrchr(str3, '\0', 0);
-	}
-
-		check_strrchr(str2 + 2, 'b', 0);//
+//		check_strrchr(str2 + 2, 'b', 0);//
 	return (0);
 }
