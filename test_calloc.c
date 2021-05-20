@@ -1,4 +1,4 @@
-#include "ft_calloc.c"
+#include "ft_calloc(2).c"
 
 int  main ()
 {

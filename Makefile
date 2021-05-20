@@ -82,7 +82,7 @@ test_split:
 
 TEST_STRNSTR = test_strnstr.c
 test_strnstr:
-	clang $(FLAGS) ft_strlen.c ft_strncmp.c $(TEST_STRNSTR) -o test_strnstr.out
+	clang $(FLAGS) ft_strlen.c ft_memcmp.c ft_strncmp.c $(TEST_STRNSTR) -o test_strnstr.out
 
 TEST_MEMCMP = test_memcmp.c
 test_memcmp:
@@ -102,16 +102,23 @@ test_atoi:
 
 TEST_CALLOC = test_calloc.c
 test_calloc:
-	clang $(FLAGS) ft_bzero.c $(TEST_CALLOC) -o test_calloc.out
+	clang $(FLAGS) $(TEST_CALLOC) -o test_calloc.out
 
 TEST_STRMAPI = test_strmapi.c
 test_strmapi:
 	clang $(FLAGS) ft_strlen.c ft_strncmp.c $(TEST_STRMAPI) -o test_strmapi.out
 
+TEST_MEMCCPY = test_memccpy.c
+test_memccpy:
+	clang $(FLAGS) $(TEST_MEMCCPY) -o test_memccpy.out
+
+
 test_build:
 	gcc $(FLAGS) $(SRCS)
 
-tests: re test_strrchr test_strchr test_itoa test_substr test_strtrim test_split test_strnstr test_memcmp test_strncmp test_strmapi
+
+
+tests: re test_strrchr test_strchr test_itoa test_substr test_strtrim test_split test_strnstr test_memcmp test_strncmp test_strmapi test_memccpy
 
 #end tests
 

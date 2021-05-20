@@ -111,6 +111,10 @@ int				main()
 
 	check_substr("test", 10, 1);
 
+	printf("test 19\n");
+
+	check_substr("tripouille", 100, 1);
+
 	printf("test end\n");
 
 	return (0);
