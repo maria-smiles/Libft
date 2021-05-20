@@ -102,7 +102,7 @@ test_atoi:
 
 TEST_CALLOC = test_calloc.c
 test_calloc:
-	clang $(FLAGS) $(TEST_CALLOC) -o test_calloc.out
+	clang $(FLAGS) ft_bzero.c $(TEST_CALLOC) -o test_calloc.out
 
 TEST_STRMAPI = test_strmapi.c
 test_strmapi:
@@ -110,8 +110,11 @@ test_strmapi:
 
 TEST_MEMCCPY = test_memccpy.c
 test_memccpy:
-	clang $(FLAGS) $(TEST_MEMCCPY) -o test_memccpy.out
+	clang $(FLAGS) ft_memchr.c ft_memcpy.c  $(TEST_MEMCCPY) -o test_memccpy.out
 
+TEST_STRLCAT = test_strlcat.c
+test_strlcat:
+	clang $(FLAGS) ft_strlen.c $(TEST_STRLCAT) -o test_strlcat.out
 
 test_build:
 	gcc $(FLAGS) $(SRCS)

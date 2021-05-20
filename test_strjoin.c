@@ -7,6 +7,22 @@ void check(int succes)
 	else
 		printf("KO\n");
 }
+void	ft_print_result(char const *s)
+
+{
+
+	int		len;
+
+
+	len = 0;
+
+	while (s[len])
+
+		len++;
+
+	write(1, s, len);
+
+}
 int main()
 {
 	printf("\ntest 1, 2\n");
@@ -33,4 +49,111 @@ int main()
 	/* 8 */ printf("len must be   %d\n", strlen("") + strlen("") + 1);
 	free(s);
 
+	char	s1[] = "lorem ipsum";
+
+	char	s2[] = "dolor sit amet";
+
+	char	*strjoin;
+
+
+	printf("\ntest 9\n");
+
+	{
+
+		if (!(strjoin = ft_strjoin(s1, s2)))
+
+			ft_print_result("NULL");
+
+		else
+
+			ft_print_result(strjoin);
+
+		if (strjoin == s1 || strjoin == s2)
+
+			ft_print_result("\nA new string was not returned");
+
+	}
+
+	printf("\ntest 10\n");
+
+	{
+
+		s1[0] = '\0';
+
+		if (!(strjoin = ft_strjoin(s1, s2)))
+
+			ft_print_result("NULL");
+
+		else
+
+			ft_print_result(strjoin);
+
+		if (strjoin == s1 || strjoin == s2)
+
+			ft_print_result("\nA new string was not returned");
+
+	}
+
+	printf("\ntest 11\n");
+
+	{
+
+		s2[0] = '\0';
+
+		if (!(strjoin = ft_strjoin(s1, s2)))
+
+			ft_print_result("NULL");
+
+		else
+
+			ft_print_result(strjoin);
+
+		if (strjoin == s1 || strjoin == s2)
+
+			ft_print_result("\nA new string was not returned");
+
+	}
+
+	printf("\ntest 12\n");
+
+	{
+
+		s1[0] = '\0';
+
+		s2[0] = '\0';
+
+		if (!(strjoin = ft_strjoin(s1, s2)))
+
+			ft_print_result("NULL");
+
+		else
+
+			ft_print_result(strjoin);
+
+		if (strjoin == s1 || strjoin == s2)
+
+			ft_print_result("\nA new string was not returned");
+
+	}
+
+	return (0);
+
 }
+
+
+
+//= ft_strjoin.c =================================================================
+//$> norminette ft_strjoin.c | grep -E '(Error|Warning)'
+//$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_strjoin.c main.c libft.a -o user_exe
+//= Test 1 ===================================================
+//$> ./user_exe 01
+//Command './user_exe 01' got killed by an Abort
+//= Test 2 ===================================================
+//$> ./user_exe 02
+//Command './user_exe 02' got killed by an Abort
+//= Test 3 ===================================================
+//$> ./user_exe 03
+//Command './user_exe 03' got killed by an Abort
+//= Test 4 ===================================================
+//$> ./user_exe 04
+//Command './user_exe 04' got killed by an Abort

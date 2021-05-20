@@ -1,4 +1,5 @@
-#include "ft_memccpy (2).c"
+#include "libft.h"
+
 int main()
 {
 	char dst[20] = "aaaaaaaaaaaaaaaaaaa\0";
