@@ -26,7 +26,7 @@ $(NAME): $(OBJS) $(HEAD)
 re: fclean all
 
 .c.o:
-	gcc $(FLAGS) -c $< -o ${<:.c=.o}
+	gcc $(FLAGS) -c $< -o ${<:.c=.o} -I .$(HEAD)
 
 clean:
 	$(RM) $(OBJS)

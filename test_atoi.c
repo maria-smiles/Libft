@@ -75,6 +75,8 @@ int main()
 		ft_print_result(ft_atoi("-+48"));
 	printf("\ntest 9\n");
 		ft_print_result(ft_atoi("--47"));
+		printf("\n");
+	ft_print_result(atoi("--47"));
 	printf("\ntest 10\n");
 		ft_print_result(ft_atoi("++47"));
 	printf("\ntest 11\n");

@@ -24,7 +24,9 @@ static char	*ft_num(int n, char *str)
 		i++;
 		j = j / 10;
 	}
-	str = (char *) malloc(sizeof(char) * (i + 2));
+	str = (char *) malloc(sizeof(char) * (i + 3));
+	if (!str)
+		return (NULL);
 	j = 0;
 	if (n < 0)
 	{

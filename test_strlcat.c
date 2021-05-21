@@ -128,11 +128,8 @@ int		main()
 //Command './user_exe 07' got killed by an Abort
 
 		memset(dest, 'r', 15);
-
 		ft_print_result(ft_strlcat(dest, "lorem ipsum dolor sit amet", 5));
-
 		write(1, "\n", 1);
-
 		write(1, dest, 15);
 
 	}

@@ -92,7 +92,7 @@ char	**ft_split(char const *s, char c)
 	while (*s == c)
 		s++;
 	if (*s == 0)
-		return (dst);		//можно  if count == 0
+		return (dst);
 	count = ft_count(s, c);
 	ft_free(dst, 0);
 	dst = malloc(sizeof(char *) * (count + 1));
