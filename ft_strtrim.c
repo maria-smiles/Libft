@@ -58,6 +58,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	i;
 	char	*newstr;
 
+	if (!s1 || !set)
+		return (0);
 	newstr = NULL;
 	i = 0;
 	len = ft_strlen(s1);
