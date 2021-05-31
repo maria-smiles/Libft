@@ -6,11 +6,11 @@ SRCS =	ft_strlen.c		ft_memset.c		ft_bzero.c		ft_calloc.c\
 		ft_putendl_fd.c	ft_strchr.c		ft_strdup.c		ft_strjoin.c\
 		ft_strlcat.c	ft_atoi.c		ft_strmapi.c 	ft_strncmp.c\
 		ft_strnstr.c 	ft_strrchr.c 	ft_strtrim.c	ft_substr.c\
-	   	ft_tolower.c 	ft_toupper.c
+	   	ft_tolower.c 	ft_toupper.c	get_next_line.c	get_next_line_utils.c
 
 FLAGS = -Wall -Wextra -Werror -g
 
-HEAD = libft.h
+HEAD = libft.h	get_next_line.h
 
 NAME = libft.a
 
@@ -26,7 +26,7 @@ $(NAME): $(OBJS) $(HEAD)
 re: fclean all
 
 .c.o:
-	gcc $(FLAGS) -c $< -o ${<:.c=.o} -I .$(HEAD)
+	gcc $(FLAGS) -c $< -o ${<:.c=.o} -MD
 
 clean:
 	$(RM) $(OBJS)
@@ -115,6 +115,10 @@ test_memccpy:
 TEST_STRLCAT = test_strlcat.c
 test_strlcat:
 	clang $(FLAGS) ft_strlen.c $(TEST_STRLCAT) -o test_strlcat.out
+
+TEST_GNL = test_gnl.c
+test_gnl:
+	clang $(FLAGS) get_next_line.c get_next_line_utils.c $(TEST_GNL) -o test_gnl.out
 
 test_build:
 	gcc $(FLAGS) $(SRCS)

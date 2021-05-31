@@ -1,7 +1,7 @@
 #include <unistd.h>
 #include <stdio.h>
 
-#include "ft_strrchr (2).c"
+#include "ft_strrchr.c"
 
 static void		ft_print_result(char const *s)
 {
